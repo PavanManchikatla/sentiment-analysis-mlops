@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  # API service
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+      - "9090:9090"  # Prometheus metrics
+    volumes:
+      - ./models:/app/models
+    environment:
+      - MODEL_PATH=/app/models/model_registry/latest
+    restart: always
